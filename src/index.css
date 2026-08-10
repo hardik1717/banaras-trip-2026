@@ -1,0 +1,1159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* ================================
+   HERO SECTION
+================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("/images/banaras-hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.75)
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: 90%;
+  max-width: 900px;
+
+  text-align: center;
+}
+
+.hero-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  font-size: 13px;
+  letter-spacing: 4px;
+  font-weight: 500;
+
+  margin-bottom: 20px;
+
+  opacity: 0.9;
+}
+
+.hero h1 {
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: 12px;
+  font-weight: 700;
+
+  margin: 0;
+}
+
+.hero-subtitle {
+  margin-top: 24px;
+
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+
+  opacity: 0.9;
+}
+
+.hero-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.7);
+
+  margin: 30px auto;
+}
+
+.hero-details {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+
+  flex-wrap: wrap;
+}
+
+.hero-details div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.hero-price {
+  margin-top: 30px;
+}
+
+.hero-price span {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.hero-price small {
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+.explore-button {
+  margin-top: 35px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+
+  cursor: pointer;
+
+  letter-spacing: 2px;
+  font-size: 12px;
+
+  backdrop-filter: blur(8px);
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.explore-button:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+.scroll-indicator {
+  position: absolute;
+
+  bottom: 25px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 2;
+
+  font-size: 9px;
+  letter-spacing: 4px;
+
+  opacity: 0.6;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .hero {
+    background-position: 60% center;
+  }
+
+  .hero-location {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .hero h1 {
+    letter-spacing: 7px;
+  }
+
+  .hero-subtitle {
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+
+  .hero-details {
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-details div {
+    font-size: 11px;
+  }
+
+  .hero-price span {
+    font-size: 1.7rem;
+  }
+}
+
+/*  countdown */
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.countdown div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.countdown strong {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.countdown span {
+  margin-top: 5px;
+  font-size: 8px;
+  letter-spacing: 2px;
+  opacity: 0.65;
+}
+
+@media (max-width: 600px) {
+  .countdown {
+    gap: 15px;
+  }
+
+  .countdown strong {
+    font-size: 19px;
+  }
+
+  .countdown div {
+    min-width: 50px;
+  }
+}
+
+/* ================================
+   ITINERARY
+================================ */
+
+.itinerary-section {
+  background: #111;
+  padding: 120px 20px;
+  color: #fff;
+}
+
+.itinerary-header {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.itinerary-header > span {
+  font-size: 11px;
+  letter-spacing: 5px;
+  opacity: 0.5;
+}
+
+.itinerary-header h2 {
+  margin-top: 15px;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 500;
+}
+
+.itinerary-header p {
+  margin-top: 15px;
+  opacity: 0.5;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+.itinerary-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.day-block {
+  margin-bottom: 100px;
+}
+
+.day-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.day-number {
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 1;
+  opacity: 0.25;
+}
+
+.day-heading span {
+  font-size: 10px;
+  letter-spacing: 4px;
+  opacity: 0.5;
+}
+
+.day-heading h3 {
+  margin-top: 5px;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.day-heading p {
+  margin-top: 5px;
+  opacity: 0.5;
+}
+
+.location-list {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  margin-left: 25px;
+  padding-left: 30px;
+}
+
+.location-card {
+  position: relative;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  overflow: hidden;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.location-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateX(5px);
+}
+
+.location-icon {
+  flex-shrink: 0;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+}
+
+.location-category {
+  font-size: 9px;
+  letter-spacing: 3px;
+  opacity: 0.4;
+}
+
+.location-content h4 {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.location-content p {
+  margin-top: 7px;
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.5;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .itinerary-section {
+    padding: 80px 18px;
+  }
+
+  .itinerary-header {
+    margin-bottom: 60px;
+  }
+
+  .day-block {
+    margin-bottom: 70px;
+  }
+
+  .day-heading {
+    gap: 15px;
+  }
+
+  .day-number {
+    font-size: 38px;
+  }
+
+  .day-heading h3 {
+    font-size: 23px;
+  }
+
+  .location-list {
+    margin-left: 18px;
+    padding-left: 18px;
+  }
+
+  .location-card {
+    padding: 17px;
+  }
+
+  .location-content h4 {
+    font-size: 16px;
+  }
+
+  .location-content p {
+    font-size: 12px;
+  }
+}
+
+.maps-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 15px;
+  padding: 9px 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 30px;
+
+  color: white;
+  text-decoration: none;
+
+  font-size: 9px;
+  letter-spacing: 1.5px;
+
+  opacity: 0.7;
+
+  transition:
+    opacity 0.3s ease,
+    background 0.3s ease;
+}
+
+.maps-button:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =================================
+   EXPENSE DASHBOARD
+================================= */
+
+.expenses-section {
+  width: 100%;
+  background: #0d0d0d;
+  color: #fff;
+  padding: 120px 20px;
+}
+
+.expenses-header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.expenses-header > span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 5px;
+  opacity: 0.5;
+}
+
+.expenses-header h2 {
+  margin-top: 15px;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 500;
+}
+
+.expenses-header p {
+  margin-top: 15px;
+  opacity: 0.5;
+  letter-spacing: 2px;
+}
+
+
+/* SUMMARY */
+
+.expense-summary {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 60px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.summary-card {
+  padding: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.summary-card span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 3px;
+  opacity: 0.5;
+}
+
+.summary-card strong {
+  display: block;
+  margin-top: 10px;
+
+  font-size: 30px;
+  font-weight: 500;
+}
+
+
+/* ADD EXPENSE */
+
+.expense-form-wrapper {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 70px;
+
+  padding: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.expense-form-wrapper > h3 {
+  margin-bottom: 25px;
+
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.expense-form {
+  display: grid;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  opacity: 0.5;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+
+  padding: 13px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.form-group select option {
+  background: #222;
+  color: white;
+}
+
+.add-expense-button {
+  margin-top: 5px;
+
+  padding: 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: white;
+  color: #111;
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+
+  transition: transform 0.2s ease;
+}
+
+.add-expense-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* TRAVELLERS */
+
+.members-section {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.members-section > h3 {
+  margin-bottom: 20px;
+
+  font-size: 11px;
+  letter-spacing: 3px;
+  opacity: 0.5;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.member-card {
+  padding: 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+
+  text-align: center;
+
+  font-size: 13px;
+  opacity: 0.7;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.member-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .expenses-section {
+    padding: 80px 18px;
+  }
+
+  .expense-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .expense-form-wrapper {
+    padding: 20px;
+  }
+
+  .members-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+/* =================================
+   EXPENSE HISTORY
+================================= */
+
+.expense-history {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 70px;
+}
+
+.expense-history-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.expense-history-header h3 {
+  margin: 0;
+
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.expense-history-header span {
+  font-size: 11px;
+  opacity: 0.4;
+}
+
+
+/* EMPTY STATE */
+
+.empty-expenses {
+  width: 100%;
+
+  padding: 40px 20px;
+
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+.empty-expenses p {
+  margin: 0 0 8px;
+
+  font-size: 14px;
+}
+
+.empty-expenses span {
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+
+/* EXPENSE LIST */
+
+.expense-list {
+  width: 100%;
+
+  display: grid;
+  gap: 10px;
+}
+
+
+/* EXPENSE ITEM */
+
+.expense-item {
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 18px 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.expense-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+
+/* LEFT */
+
+.expense-main {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  min-width: 0;
+}
+
+.expense-category {
+  min-width: 70px;
+
+  padding: 7px 8px;
+
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  text-align: center;
+
+  font-size: 8px;
+  letter-spacing: 1px;
+
+  opacity: 0.65;
+}
+
+.expense-info {
+  min-width: 0;
+}
+
+.expense-info h4 {
+  margin: 0 0 5px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.expense-info p {
+  margin: 0;
+
+  font-size: 11px;
+  opacity: 0.45;
+}
+
+.expense-info p strong {
+  color: white;
+  opacity: 0.8;
+}
+
+
+/* RIGHT */
+
+.expense-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  flex-shrink: 0;
+}
+
+.expense-amount {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.delete-expense {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 7px;
+
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.delete-expense:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .expense-history {
+    margin-bottom: 50px;
+  }
+
+  .expense-item {
+    padding: 15px;
+  }
+
+  .expense-main {
+    gap: 10px;
+  }
+
+  .expense-category {
+    min-width: 60px;
+  }
+
+  .expense-info h4 {
+    max-width: 150px;
+  }
+
+  .expense-right {
+    gap: 8px;
+  }
+
+  .expense-amount {
+    font-size: 13px;
+  }
+
+} 
+
+/* =========================================
+   MOBILE RESPONSIVE FIX
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* Prevent sections from becoming wider than phone */
+
+section {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  /* Global spacing */
+
+  section {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+
+  /* Containers */
+
+  .itinerary-container,
+  .expenses-header,
+  .expense-summary,
+  .expense-form-wrapper,
+  .expense-history,
+  .members-section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  /* =====================================
+     IMAGES
+  ===================================== */
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+
+  /* Location images */
+
+  .location-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+
+  /* =====================================
+     ITINERARY
+  ===================================== */
+
+  .day-block {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .location-list {
+    width: 100%;
+  }
+
+  .location-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  /* =====================================
+     EXPENSES
+  ===================================== */
+
+  .expense-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .expense-form-wrapper {
+    padding: 20px;
+  }
+
+  .expense-form {
+    width: 100%;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+
+  /* Expense history */
+
+  .expense-item {
+    width: 100%;
+    max-width: 100%;
+
+    flex-direction: row;
+
+    overflow: hidden;
+  }
+
+
+  .expense-main {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .expense-info {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .expense-info h4 {
+    max-width: 100%;
+  }
+
+
+  /* Travellers */
+
+  .members-grid {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .member-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 480px) {
+
+  .expenses-section {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .members-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .member-card {
+    padding: 13px 8px;
+    font-size: 12px;
+  }
+
+  .expense-item {
+    padding: 13px;
+    gap: 8px;
+  }
+
+  .expense-category {
+    min-width: 50px;
+    padding: 6px 5px;
+    font-size: 7px;
+  }
+
+  .expense-amount {
+    font-size: 12px;
+  }
+
+  .delete-expense {
+    width: 28px;
+    height: 28px;
+  }
+
+}
