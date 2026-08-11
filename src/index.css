@@ -2374,54 +2374,36 @@ button:hover {
   transform: scale(0.96);
 }
 
-
 /* =========================================
    MOBILE NAVIGATION
 ========================================= */
 
 @media (max-width: 768px) {
-
-  .top-navigation {
-    position: sticky;
-    top: 0;
-
-    width: 100%;
-  }
-
   .navigation-inner {
-    min-height: 58px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 7px 12px;
+    margin: 0;
 
-    padding: 7px 10px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
+    display: block;
     overflow: hidden;
-  }
-
-  /* Hide logo on mobile to give tabs more room */
-
-  .navigation-logo {
-    display: none;
   }
 
   .navigation-tabs {
     width: 100%;
+    box-sizing: border-box;
 
     display: flex;
     align-items: center;
-
-    gap: 7px;
+    gap: 8px;
 
     overflow-x: auto;
     overflow-y: hidden;
 
-    padding: 1px 2px;
+    padding: 0;
+    margin: 0;
 
     scrollbar-width: none;
-
     -webkit-overflow-scrolling: touch;
   }
 
@@ -2431,23 +2413,9 @@ button:hover {
 
   .navigation-tabs button {
     flex: 0 0 auto;
-
-    min-height: 40px;
-
-    padding: 8px 13px;
-
-    border-radius: 999px;
-
-    background: rgba(255, 255, 255, 0.07);
-
-    border: 1px solid rgba(255, 255, 255, 0.07);
-
-    color: rgba(255, 255, 255, 0.8);
-
-    font-size: 12px;
-
     white-space: nowrap;
   }
+}
 
   .navigation-tabs button:hover,
   .navigation-tabs button:focus {
@@ -2463,7 +2431,7 @@ button:hover {
     scroll-behavior: smooth;
     scroll-padding-top: 70px;
   }
-}
+
 
 /* ========================================
    CINEMATIC ROUTE
