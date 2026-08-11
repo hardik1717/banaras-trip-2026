@@ -3409,3 +3409,579 @@ button:hover {
       font-size: 13px;
     }
   }
+/* =========================================================
+   FINAL CLEAN OVERRIDES
+   - Restores desktop layout
+   - Keeps train route horizontal on mobile
+   - Prevents route-map styles from overriding train-card styles
+   - Prevents horizontal overflow
+   ========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* -------------------------
+   TRAIN JOURNEY - DESKTOP
+   ------------------------- */
+.train-journey {
+  width: 100%;
+  max-width: 100%;
+  padding: 100px 20px;
+  overflow: hidden;
+}
+
+.train-header,
+.journey-block,
+.journey-connector {
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.train-header {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.journey-block {
+  margin-bottom: 40px;
+}
+
+.train-card {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 35px;
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.train-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.train-title > div:first-child {
+  min-width: 0;
+}
+
+.train-icon {
+  flex: 0 0 60px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Keep the train ticket route horizontal on desktop */
+.train-route {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  margin: 40px 0;
+  overflow: visible;
+}
+
+.train-route .station {
+  min-width: 0;
+  text-align: center;
+}
+
+.train-route .station.arrival {
+  text-align: center;
+}
+
+.train-route .route-line {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: none !important;
+}
+
+.train-route .route-line .line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+/* IMPORTANT: scope this so the cinematic map train cannot override it */
+.train-route .moving-train {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.train-route .moving-train svg {
+  width: 28px;
+  height: 28px;
+  transform: none !important;
+}
+
+.train-route .distance {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 22px);
+  transform: translateX(-50%) !important;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* Keep cinematic map animation independent */
+.route-map .moving-train {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Journey info */
+.train-card .journey-info {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 45px;
+}
+
+/* Passenger list */
+.train-card .passenger-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.train-card .passenger-row {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 15px;
+}
+
+.train-card .passenger-name {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.train-card .passenger-ticket {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+/* -------------------------
+   MOBILE TRAIN JOURNEY
+   ------------------------- */
+@media (max-width: 768px) {
+  .train-journey {
+    padding: 70px 14px;
+  }
+
+  .train-header {
+    margin-bottom: 35px;
+    text-align: left;
+  }
+
+  .train-header h2 {
+    font-size: 28px;
+    line-height: 1.15;
+  }
+
+  .train-header p {
+    font-size: 14px;
+  }
+
+  .journey-block,
+  .journey-connector {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .journey-direction {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .journey-direction > span {
+    flex-shrink: 0;
+  }
+
+  .journey-direction strong {
+    font-size: 16px;
+  }
+
+  .journey-direction small {
+    font-size: 11px;
+  }
+
+  .train-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 16px;
+    border-radius: 24px;
+    margin: 0;
+  }
+
+  .train-title {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .train-title h3 {
+    font-size: 23px;
+    line-height: 1.15;
+    margin: 6px 0 5px;
+  }
+
+  .train-title p {
+    font-size: 12px;
+  }
+
+  .train-label {
+    font-size: 8px;
+  }
+
+  .train-icon {
+    flex-basis: 56px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .train-icon svg {
+    width: 28px;
+    height: 28px;
+    transform: none !important;
+  }
+
+  /* HORIZONTAL route — never rotate this container */
+  .train-card .train-route {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 68px minmax(0, 1fr);
+    align-items: center;
+    gap: 7px;
+    margin: 34px 0;
+    transform: none !important;
+  }
+
+  .train-card .station {
+    min-width: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .train-card .station.arrival {
+    text-align: right;
+  }
+
+  .train-card .station-dot {
+    display: block;
+    width: 9px;
+    height: 9px;
+    margin: 0 0 8px;
+  }
+
+  .train-card .station.arrival .station-dot {
+    margin-left: auto;
+  }
+
+  .train-card .station-code {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .train-card .station h4 {
+    font-size: 16px;
+    line-height: 1.15;
+    margin: 6px 0 3px;
+    overflow-wrap: anywhere;
+  }
+
+  .train-card .station p {
+    font-size: 11px;
+    margin: 0 0 7px;
+  }
+
+  .train-card .station strong {
+    font-size: 15px;
+  }
+
+  .train-card .station small {
+    font-size: 9px;
+    margin-top: 3px;
+  }
+
+  .train-card .route-line {
+    width: 68px;
+    min-width: 68px;
+    height: 45px;
+    position: relative;
+    display: block;
+    transform: none !important;
+  }
+
+  .train-card .route-line .line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%) !important;
+  }
+
+  .train-card .moving-train {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    width: auto;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .train-card .moving-train svg {
+    width: 22px;
+    height: 22px;
+    transform: none !important;
+  }
+
+  .train-card .distance {
+    position: absolute;
+    left: 50%;
+    top: calc(50% + 13px);
+    transform: translateX(-50%) !important;
+    font-size: 8px;
+    white-space: nowrap;
+  }
+
+  .train-card .journey-info {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin-bottom: 35px;
+  }
+
+  .train-card .journey-info > div {
+    min-width: 0;
+    padding: 11px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+  }
+
+  .train-card .journey-info svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .train-card .journey-info small {
+    display: block;
+    font-size: 8px;
+    margin-bottom: 2px;
+  }
+
+  .train-card .journey-info span {
+    min-width: 0;
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  .train-card .passenger-section {
+    margin-top: 30px;
+  }
+
+  .train-card .passenger-heading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .train-card .passenger-heading > div {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .train-card .passenger-heading h3 {
+    font-size: 18px;
+  }
+
+  .train-card .passenger-heading > span {
+    flex-shrink: 0;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .train-card .passenger-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .train-card .passenger-row {
+    width: 100%;
+    min-height: 62px;
+    display: grid;
+    grid-template-columns: 25px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 9px;
+    border-radius: 16px;
+  }
+
+  .train-card .passenger-number {
+    width: 25px;
+    min-width: 25px;
+    font-size: 10px;
+  }
+
+  .train-card .passenger-name {
+    min-width: 0;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .train-card .passenger-ticket {
+    min-width: 76px;
+    max-width: 105px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
+
+  .train-card .ticket-status {
+    font-size: 8px;
+    padding: 5px 7px;
+    white-space: nowrap;
+  }
+
+  .train-card .passenger-ticket small {
+    max-width: 105px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 8px;
+  }
+
+  .journey-connector {
+    margin: 28px auto;
+    gap: 8px;
+    font-size: 9px;
+    text-align: center;
+  }
+
+  .journey-connector svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .train-journey {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .train-card {
+    padding: 17px 13px;
+  }
+
+  .train-card .train-route {
+    grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr);
+    gap: 5px;
+  }
+
+  .train-card .route-line {
+    width: 58px;
+    min-width: 58px;
+  }
+
+  .train-card .station h4 {
+    font-size: 14px;
+  }
+
+  .train-card .station strong {
+    font-size: 14px;
+  }
+
+  .train-card .journey-info {
+    gap: 5px;
+  }
+
+  .train-card .journey-info > div {
+    padding: 10px 4px;
+  }
+
+  .train-card .journey-info span {
+    font-size: 9px;
+  }
+
+  .train-card .passenger-row {
+    grid-template-columns: 23px minmax(0, 1fr) auto;
+    padding: 10px 8px;
+  }
+}
