@@ -3063,3 +3063,352 @@ button:hover {
       flex-shrink: 0;
     }
   }
+
+/* =========================================
+   MOBILE TRAIN JOURNEY FIX
+   ========================================= */
+
+   @media (max-width: 768px) {
+
+    /* Main train section */
+    .train-journey {
+      width: 100%;
+      padding: 60px 14px;
+      overflow: hidden;
+    }
+  
+    .train-header {
+      padding: 0 4px;
+      text-align: left;
+    }
+  
+    .train-header h2 {
+      font-size: 28px;
+      line-height: 1.2;
+    }
+  
+    .train-header p {
+      font-size: 14px;
+    }
+  
+    /* Going / Return heading */
+    .journey-block {
+      width: 100%;
+    }
+  
+    .journey-direction {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+  
+    .journey-direction > span {
+      flex-shrink: 0;
+    }
+  
+    .journey-direction strong {
+      font-size: 16px;
+    }
+  
+    .journey-direction small {
+      font-size: 12px;
+    }
+  
+    /* Train card */
+    .train-card {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+  
+    /* Header */
+    .train-title {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+  
+    .train-title h3 {
+      font-size: 24px;
+      line-height: 1.15;
+      margin: 8px 0 5px;
+    }
+  
+    .train-title p {
+      font-size: 13px;
+    }
+  
+    .train-icon {
+      width: 58px;
+      height: 58px;
+      min-width: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    /* =====================================
+       TRAIN ROUTE
+       ===================================== */
+  
+    .train-route {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+      margin: 35px 0;
+    }
+  
+    .station {
+      min-width: 0;
+    }
+  
+    .station.arrival {
+      text-align: right;
+    }
+  
+    .station-code {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  
+    .station h4 {
+      font-size: 17px;
+      line-height: 1.15;
+      margin: 7px 0 4px;
+      overflow-wrap: anywhere;
+    }
+  
+    .station p {
+      font-size: 12px;
+      margin: 0 0 8px;
+    }
+  
+    .station strong {
+      font-size: 16px;
+      display: block;
+    }
+  
+    .station small {
+      font-size: 11px;
+    }
+  
+    /* Route line stays in the center */
+    .route-line {
+      width: 70px;
+      min-width: 70px;
+      height: 120px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .route-line .line {
+      width: 2px;
+      height: 85px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .moving-train {
+      position: absolute;
+      z-index: 3;
+      left: 50% !important;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .distance {
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-size: 9px;
+      white-space: nowrap;
+    }
+  
+    /* =====================================
+       JOURNEY INFO
+       ===================================== */
+  
+    .journey-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+  
+    .journey-info > div {
+      min-width: 0;
+      padding: 12px 8px;
+      border-radius: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+  
+    .journey-info small {
+      display: block;
+      font-size: 10px;
+      margin-bottom: 3px;
+    }
+  
+    .journey-info span {
+      font-size: 12px;
+      line-height: 1.2;
+    }
+  
+    /* =====================================
+       PASSENGERS
+       ===================================== */
+  
+    .passenger-section {
+      margin-top: 35px;
+    }
+  
+    .passenger-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+  
+    .passenger-heading h3 {
+      font-size: 20px;
+    }
+  
+    .passenger-heading > span {
+      font-size: 12px;
+      white-space: nowrap;
+    }
+  
+    .passenger-list {
+      width: 100%;
+      margin-top: 15px;
+    }
+  
+    .passenger-row {
+      width: 100%;
+      min-height: 68px;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 10px;
+      border-radius: 17px;
+    }
+  
+    .passenger-number {
+      font-size: 11px;
+    }
+  
+    .passenger-name {
+      font-size: 14px;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+  
+    .passenger-ticket {
+      min-width: 75px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+  
+    .ticket-status {
+      font-size: 10px;
+      padding: 5px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+  
+    .passenger-ticket small {
+      font-size: 9px;
+      white-space: nowrap;
+    }
+  
+    /* Connector */
+    .journey-connector {
+      margin: 30px 0;
+      gap: 8px;
+      font-size: 11px;
+    }
+  }
+  
+  
+  /* =========================================
+     SMALL PHONES
+     ========================================= */
+  
+  @media (max-width: 420px) {
+  
+    .train-journey {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+    .train-card {
+      padding: 16px;
+      border-radius: 20px;
+    }
+  
+    .train-title h3 {
+      font-size: 21px;
+    }
+  
+    .train-icon {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+    }
+  
+    .train-route {
+      grid-template-columns: minmax(0, 1fr) 55px minmax(0, 1fr);
+      gap: 5px;
+    }
+  
+    .route-line {
+      width: 55px;
+      min-width: 55px;
+    }
+  
+    .station h4 {
+      font-size: 15px;
+    }
+  
+    .station strong {
+      font-size: 14px;
+    }
+  
+    .journey-info {
+      gap: 5px;
+    }
+  
+    .journey-info > div {
+      padding: 10px 5px;
+    }
+  
+    .journey-info span {
+      font-size: 10px;
+    }
+  
+    .passenger-row {
+      grid-template-columns: 24px minmax(0, 1fr) auto;
+      padding: 10px 8px;
+    }
+  
+    .passenger-name {
+      font-size: 13px;
+    }
+  }
