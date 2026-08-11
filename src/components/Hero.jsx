@@ -56,12 +56,12 @@ function Hero() {
         >
           <div>
             <CalendarDays size={18} />
-            <span>01 — 04 OCT 2026</span>
+            <span>30 Sept — 05 OCT 2026</span>
           </div>
 
           <div>
             <Users size={18} />
-            <span>13 TRAVELLERS</span>
+            <span>15 TRAVELLERS</span>
           </div>
         </motion.div>
 
@@ -71,7 +71,7 @@ function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
         >
-          <span>₹8,500</span>
+          <span>₹8,000</span>
           <small> / PERSON</small>
         </motion.div>
 

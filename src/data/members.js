@@ -21,7 +21,7 @@ export const members = [
     },
     {
       id: 6,
-      name: "Tejas",
+      name: "soumit",
     },
     {
       id: 7,
@@ -29,11 +29,11 @@ export const members = [
     },
     {
       id: 8,
-      name: "Ruturaj",
+      name: "Pratik",
     },
     {
       id: 9,
-      name: "Avinash",
+      name: "Avin",
     },
     {
       id: 10,
@@ -45,4 +45,6 @@ export const members = [
     },
     { id: 12, name: "Nishant" },
     { id: 13, name: "Vidhisha" },
+    { id: 14, name: "Ishwari" },
+    { id: 15, name: "ABC" },
   ];

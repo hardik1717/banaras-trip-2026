@@ -1157,3 +1157,1529 @@ section {
   }
 
 }
+
+/* ================================
+   TRAIN JOURNEY
+================================ */
+
+.train-journey {
+  padding: 100px 20px;
+  background: #0b0b0b;
+  color: white;
+}
+
+.train-header {
+  max-width: 1100px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.section-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.55;
+}
+
+.train-header h2 {
+  font-size: clamp(32px, 5vw, 58px);
+  margin: 12px 0;
+}
+
+.train-header p {
+  opacity: 0.6;
+}
+
+.train-card {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px;
+  border-radius: 28px;
+  background: #151515;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.train-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.train-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  opacity: 0.5;
+}
+
+.train-title h3 {
+  font-size: 28px;
+  margin: 8px 0 4px;
+}
+
+.train-title p {
+  margin: 0;
+  opacity: 0.5;
+}
+
+.train-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Route */
+
+.train-route {
+  display: grid;
+  grid-template-columns: 190px 1fr 190px;
+  align-items: center;
+  gap: 25px;
+  margin: 60px 0;
+}
+
+.station {
+  text-align: center;
+}
+
+.station-dot {
+  width: 14px;
+  height: 14px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: white;
+}
+
+.station-code {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.station h4 {
+  margin: 8px 0 3px;
+  font-size: 15px;
+}
+
+.station p {
+  margin: 0 0 12px;
+  opacity: 0.5;
+  font-size: 13px;
+}
+
+.station strong {
+  display: block;
+  font-size: 18px;
+}
+
+.station small {
+  display: block;
+  margin-top: 4px;
+  opacity: 0.5;
+}
+
+/* Animated line */
+
+.route-line {
+  position: relative;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.moving-train {
+  position: absolute;
+  top: 18px;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+
+.distance {
+  position: absolute;
+  left: 50%;
+  top: 32px;
+  transform: translateX(-50%);
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+/* Journey information */
+
+.journey-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 45px;
+}
+
+.journey-info > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.journey-info span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.journey-info small {
+  opacity: 0.45;
+}
+
+/* Passenger section */
+
+.passenger-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.passenger-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.passenger-heading h3 {
+  margin: 0;
+}
+
+.passenger-heading > span {
+  font-size: 13px;
+  opacity: 0.5;
+}
+
+.passenger-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.passenger-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.passenger-number {
+  font-size: 11px;
+  opacity: 0.3;
+  min-width: 20px;
+}
+
+.passenger-name {
+  flex: 1;
+  font-size: 14px;
+}
+
+.ticket-status {
+  font-size: 11px;
+  padding: 5px 9px;
+  border-radius: 20px;
+}
+
+.ticket-status.waiting {
+  background: rgba(255, 180, 0, 0.12);
+  color: #ffc44d;
+}
+
+.ticket-status.confirmed {
+  background: rgba(0, 200, 120, 0.12);
+  color: #4ade9a;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .train-journey {
+    padding: 70px 15px;
+  }
+
+  .train-card {
+    padding: 22px 16px;
+    border-radius: 22px;
+  }
+
+  .train-route {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 40px 0;
+  }
+
+  .route-line {
+    height: 65px;
+    transform: rotate(90deg);
+    width: 80px;
+    margin: -5px auto;
+  }
+
+  .distance {
+    transform: translateX(-50%) rotate(-90deg);
+    white-space: nowrap;
+  }
+
+  .moving-train {
+    transform: translateX(-50%);
+  }
+
+  .journey-info {
+    grid-template-columns: 1fr;
+  }
+
+  .passenger-list {
+    grid-template-columns: 1fr;
+  }
+
+  .passenger-heading {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .passenger-heading > span {
+    white-space: nowrap;
+  }
+
+  .train-title h3 {
+    font-size: 23px;
+  }
+
+  .station-code {
+    font-size: 25px;
+  }
+}
+
+/* ================================
+   TWO TRAIN JOURNEYS
+================================ */
+
+.journey-block {
+  max-width: 1100px;
+  margin: 0 auto 40px;
+}
+
+.journey-direction {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.journey-direction > span {
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.journey-direction strong {
+  display: block;
+  font-size: 18px;
+}
+
+.journey-direction small {
+  display: block;
+  margin-top: 3px;
+  opacity: 0.45;
+  font-size: 12px;
+}
+
+.journey-connector {
+  max-width: 1100px;
+  margin: 10px auto 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0.35;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.passenger-ticket {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.passenger-ticket small {
+  font-size: 9px;
+  opacity: 0.45;
+}
+
+@media (max-width: 700px) {
+
+  .journey-direction {
+    padding-left: 5px;
+  }
+
+  .journey-direction strong {
+    font-size: 16px;
+  }
+
+  .journey-connector {
+    margin: 5px auto 35px;
+  }
+
+  .passenger-ticket {
+    max-width: 90px;
+    text-align: right;
+  }
+}
+
+/* ========================================
+   VARANASI CINEMATIC THEME
+======================================== */
+
+:root {
+  --bg-main: #171411;
+  --bg-card: #211c18;
+  --bg-card-light: #2a241f;
+
+  --gold: #d9a441;
+  --gold-light: #f0c66a;
+
+  --cream: #f5ead5;
+  --text-main: #eee3d1;
+  --text-muted: #a99d8d;
+
+  --ganga: #78a9b8;
+
+  --border: rgba(217, 164, 65, 0.18);
+}
+
+/* Main page */
+
+body {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(217, 164, 65, 0.08),
+      transparent 35%
+    ),
+    var(--bg-main);
+
+  color: var(--text-main);
+}
+
+/* Sections */
+
+section {
+  background: transparent;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3 {
+  color: var(--cream);
+}
+
+p {
+  color: var(--text-muted);
+}
+
+/* Cards */
+
+.train-card,
+.location-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(0, 0, 0, 0.08)
+    ),
+    var(--bg-card);
+
+  border: 1px solid var(--border);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Gold labels */
+
+.train-label,
+.section-label,
+.location-category {
+  color: var(--gold);
+}
+
+/* Train section */
+
+.train-journey {
+  position: relative;
+  padding: 100px 20px;
+}
+
+/* Train icon */
+
+.train-icon {
+  color: var(--gold);
+  background: rgba(217, 164, 65, 0.08);
+  border: 1px solid var(--border);
+}
+
+/* Route */
+
+.route-line .line {
+  background: linear-gradient(
+    90deg,
+    var(--gold),
+    var(--ganga)
+  );
+}
+
+.moving-train {
+  color: var(--gold-light);
+}
+
+/* Station */
+
+.station-code {
+  color: var(--gold);
+}
+
+.station-dot {
+  background: var(--gold);
+  box-shadow:
+    0 0 0 6px rgba(217, 164, 65, 0.1),
+    0 0 25px rgba(217, 164, 65, 0.3);
+}
+
+/* Journey information */
+
+.journey-info {
+  background: rgba(255, 255, 255, 0.025);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Passenger rows */
+
+.passenger-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.passenger-row:hover {
+  background: rgba(217, 164, 65, 0.04);
+}
+
+.passenger-number {
+  color: var(--gold);
+}
+
+/* Confirmed / waiting */
+
+.ticket-status.confirmed {
+  color: #8fd0a5;
+  background: rgba(143, 208, 165, 0.1);
+}
+
+.ticket-status.waiting {
+  color: var(--gold-light);
+  background: rgba(217, 164, 65, 0.1);
+}
+
+/* Direction */
+
+.journey-direction > span {
+  color: var(--gold);
+}
+
+/* Connector */
+
+.journey-connector {
+  color: var(--gold);
+}
+
+/* Buttons / links */
+
+button {
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   TRIP FINANCE
+======================================== */
+
+.trip-finance {
+  background: #f7f7f5;
+  padding: 90px 20px;
+}
+
+.finance-container {
+  width: min(1050px, 100%);
+  margin: 0 auto;
+}
+
+.finance-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.finance-header h2 {
+  font-size: clamp(32px, 5vw, 48px);
+  color: #171717;
+}
+
+.finance-header p {
+  margin-top: 10px;
+  color: #888;
+  font-size: 14px;
+}
+
+.finance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.finance-card {
+  background: #fff;
+  border: 1px solid #e8e6e1;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+}
+
+.finance-card.featured {
+  background: #171717;
+  color: #fff;
+}
+
+.finance-card > span {
+  display: block;
+  margin-top: 18px;
+  font-size: 12px;
+  color: #888;
+}
+
+.finance-card.featured > span {
+  color: #aaa;
+}
+
+.finance-card strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 28px;
+}
+
+.finance-card small {
+  display: block;
+  margin-top: 5px;
+  color: #999;
+  font-size: 11px;
+}
+
+.finance-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4efe6;
+  color: #947037;
+}
+
+.finance-icon.paid {
+  background: #eaf6ee;
+  color: #27734a;
+}
+
+.finance-icon.pending {
+  background: #f8f0dc;
+  color: #8a6424;
+}
+
+/* Progress */
+
+.payment-progress {
+  background: #fff;
+  border: 1px solid #e8e6e1;
+  border-radius: 18px;
+  padding: 22px;
+  margin-top: 15px;
+}
+
+.progress-top,
+.progress-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.progress-top strong {
+  color: #947037;
+}
+
+.progress-bottom {
+  margin-top: 8px;
+  color: #999;
+  font-size: 10px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #eeeae2;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.progress-bar div {
+  height: 100%;
+  background: #947037;
+  border-radius: inherit;
+}
+
+/* Per person */
+
+.per-person-card {
+  background: #fff;
+  border: 1px solid #e8e6e1;
+  border-radius: 20px;
+  padding: 25px;
+  margin-top: 15px;
+}
+
+.per-person-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.per-person-header > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #947037;
+}
+
+.per-person-header span {
+  display: block;
+  color: #222;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.per-person-header small {
+  display: block;
+  color: #999;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.per-person-header > strong {
+  font-size: 26px;
+}
+
+/* Cost breakdown */
+
+.cost-breakdown {
+  margin-top: 5px;
+}
+
+.cost-breakdown > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0efec;
+  font-size: 13px;
+}
+
+.cost-breakdown span {
+  color: #777;
+}
+
+.total-row {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+.total-row span,
+.total-row strong {
+  color: #171717;
+  font-weight: 700;
+}
+
+/* Train */
+
+.train-cost-card {
+  background: #fff;
+  border: 1px solid #e8e6e1;
+  border-radius: 20px;
+  padding: 25px;
+  margin-top: 15px;
+}
+
+.train-cost-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.train-cost-title h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+}
+
+.train-cost-title p {
+  color: #999;
+  font-size: 11px;
+}
+
+.train-cost-row,
+.train-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0efec;
+}
+
+.train-cost-row span,
+.train-total span {
+  display: block;
+  font-size: 13px;
+}
+
+.train-cost-row small {
+  display: block;
+  color: #999;
+  font-size: 10px;
+}
+
+.train-total {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.train-total strong {
+  font-size: 20px;
+}
+
+/* Payment schedule */
+
+.payment-schedule {
+  background: #fff;
+  border: 1px solid #e8e6e1;
+  border-radius: 20px;
+  padding: 25px;
+  margin-top: 15px;
+}
+
+.payment-schedule h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0efec;
+}
+
+.schedule-item:last-child {
+  border-bottom: none;
+}
+
+.schedule-item > div strong,
+.schedule-item > div span {
+  display: block;
+}
+
+.schedule-item > div span {
+  color: #999;
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+.schedule-item > strong {
+  font-size: 14px;
+}
+
+.schedule-status {
+  font-size: 9px;
+  font-weight: 700;
+  color: #27734a;
+  background: #eaf6ee;
+  padding: 5px 8px;
+  border-radius: 20px;
+}
+
+.pending-status {
+  color: #8a6424;
+  background: #f8f0dc;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .trip-finance {
+    padding: 70px 14px;
+  }
+
+  .finance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .finance-card {
+    padding: 20px;
+  }
+
+  .finance-card strong {
+    font-size: 25px;
+  }
+
+  .per-person-header {
+    align-items: flex-start;
+  }
+
+  .per-person-header > strong {
+    font-size: 21px;
+  }
+
+  .schedule-item {
+    grid-template-columns: 1fr auto;
+  }
+
+  .schedule-status {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .schedule-item > strong {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+}
+/* ========================================
+   FINANCE TEXT VISIBILITY FIX
+======================================== */
+
+.trip-finance {
+  color: #171717;
+}
+
+.finance-header h2 {
+  color: #171717 !important;
+}
+
+.finance-header p {
+  color: #777 !important;
+}
+
+.finance-card {
+  color: #171717;
+}
+
+.finance-card > span {
+  color: #555 !important;
+}
+
+.finance-card strong {
+  color: #171717 !important;
+}
+
+.finance-card small {
+  color: #777 !important;
+}
+
+/* Keep featured card intentionally dark */
+
+.finance-card.featured {
+  background: #171717;
+}
+
+.finance-card.featured > span {
+  color: #d0d0d0 !important;
+}
+
+.finance-card.featured strong {
+  color: #ffffff !important;
+}
+
+.finance-card.featured small {
+  color: #bdbdbd !important;
+}
+
+/* Progress */
+
+.payment-progress {
+  color: #171717;
+}
+
+.progress-top span {
+  color: #444 !important;
+}
+
+.progress-top strong {
+  color: #947037 !important;
+}
+
+.progress-bottom span {
+  color: #888 !important;
+}
+
+/* Per person */
+
+.per-person-card {
+  color: #171717;
+}
+
+.per-person-header span {
+  color: #222 !important;
+}
+
+.per-person-header small {
+  color: #888 !important;
+}
+
+.per-person-header > strong {
+  color: #171717 !important;
+}
+
+.cost-breakdown span {
+  color: #666 !important;
+}
+
+.cost-breakdown strong {
+  color: #222 !important;
+}
+
+.total-row span,
+.total-row strong {
+  color: #171717 !important;
+}
+
+/* Train costs */
+
+.train-cost-card {
+  color: #171717;
+}
+
+.train-cost-title h3 {
+  color: #222 !important;
+}
+
+.train-cost-title p {
+  color: #888 !important;
+}
+
+.train-cost-row span {
+  color: #444 !important;
+}
+
+.train-cost-row small {
+  color: #999 !important;
+}
+
+.train-cost-row strong {
+  color: #171717 !important;
+}
+
+.train-total span {
+  color: #444 !important;
+}
+
+.train-total strong {
+  color: #171717 !important;
+}
+
+/* Payment schedule */
+
+.payment-schedule {
+  color: #171717;
+}
+
+.payment-schedule h3 {
+  color: #222 !important;
+}
+
+.schedule-item > div strong {
+  color: #222 !important;
+}
+
+.schedule-item > div span {
+  color: #888 !important;
+}
+
+.schedule-item > strong {
+  color: #171717 !important;
+}
+
+.schedule-status {
+  color: #27734a !important;
+}
+
+.pending-status {
+  color: #8a6424 !important;
+}
+
+/* ========================================
+   TOP NAVIGATION
+======================================== */
+
+.top-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 9990;
+
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.navigation-inner {
+  width: min(1150px, calc(100% - 40px));
+  min-height: 68px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.navigation-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.navigation-logo > span {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: #171717;
+  color: #fff;
+
+  font-family: "Playfair Display", serif;
+  font-size: 13px;
+}
+
+.navigation-logo strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.1;
+  color: #171717;
+}
+
+.navigation-logo small {
+  display: block;
+  margin-top: 2px;
+
+  color: #999;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+}
+
+.navigation-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navigation-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 9px 13px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+  color: #777;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navigation-tabs button:hover {
+  background: #f4efe6;
+  color: #947037;
+}
+
+.navigation-tabs button:active {
+  transform: scale(0.96);
+}
+
+/* Keep the sticky nav from hiding section headings */
+
+#finance,
+#itinerary,
+#train-journey,
+#expenses {
+  scroll-margin-top: 80px;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+  .top-navigation {
+    display: none;
+  }
+
+}
+
+/* ========================================
+   CINEMATIC ROUTE
+======================================== */
+
+.route-section {
+  background: #11110f;
+  color: #fff;
+  padding: 100px 20px;
+  overflow: hidden;
+}
+
+.route-container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.route-header {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.route-header h2 {
+  margin-top: 12px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(38px, 6vw, 70px);
+  line-height: 0.95;
+  font-weight: 500;
+}
+
+.route-header p {
+  margin-top: 20px;
+  color: #999;
+  font-size: 14px;
+}
+
+/* Map */
+
+.route-map {
+  position: relative;
+  width: 100%;
+  height: 560px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 60% 35%,
+      rgba(180, 145, 85, 0.08),
+      transparent 35%
+    ),
+    #151512;
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.22;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.04) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+}
+
+.map-label {
+  position: absolute;
+  color: rgba(255,255,255,0.08);
+  letter-spacing: 5px;
+  font-size: 50px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.map-label-1 {
+  left: 10%;
+  top: 15%;
+}
+
+.map-label-2 {
+  right: 8%;
+  bottom: 15%;
+  font-size: 18px;
+}
+
+/* SVG */
+
+.route-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Stops */
+
+.route-stop {
+  position: absolute;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  z-index: 4;
+}
+
+.route-pin {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #171717;
+  border: 1px solid #b49255;
+
+  color: #b49255;
+
+  box-shadow:
+    0 0 0 7px rgba(180,145,85,0.08),
+    0 8px 30px rgba(0,0,0,0.4);
+}
+
+.route-stop-text {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.route-stop-text strong {
+  font-size: 13px;
+  color: #fff;
+}
+
+.route-stop-text span {
+  margin-top: 2px;
+  font-size: 9px;
+  color: #888;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Train */
+
+.moving-train {
+  position: absolute;
+
+  width: 34px;
+  height: 34px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #b49255;
+  color: #111;
+
+  z-index: 6;
+
+  box-shadow:
+    0 0 0 8px rgba(180,145,85,0.1),
+    0 0 30px rgba(180,145,85,0.3);
+}
+
+/* Journey label */
+
+.route-journey-label {
+  position: absolute;
+  left: 9%;
+  bottom: 9%;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 9px 13px;
+
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 30px;
+
+  background: rgba(0,0,0,0.25);
+
+  color: #b49255;
+
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+/* Summary */
+
+.route-summary {
+  margin-top: 15px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+
+  padding: 25px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+
+  background: #151512;
+}
+
+.route-summary div:not(.route-arrow) {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.route-summary span {
+  color: #777;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.route-summary strong {
+  font-size: 15px;
+}
+
+.route-arrow {
+  color: #b49255;
+  font-size: 20px;
+  padding: 0 20px;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .route-section {
+    padding: 75px 14px;
+  }
+
+  .route-map {
+    height: 500px;
+    border-radius: 20px;
+  }
+
+  .map-label-1 {
+    font-size: 30px;
+    top: 10%;
+  }
+
+  .map-label-2 {
+    font-size: 12px;
+  }
+
+  .route-stop-text strong {
+    font-size: 11px;
+  }
+
+  .route-stop-text span {
+    font-size: 8px;
+  }
+
+  .route-pin {
+    width: 30px;
+    height: 30px;
+  }
+
+  .route-summary {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .route-arrow {
+    display: none;
+  }
+
+  .route-summary div:not(.route-arrow) {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .route-journey-label {
+    left: 6%;
+    bottom: 5%;
+  }
+}
