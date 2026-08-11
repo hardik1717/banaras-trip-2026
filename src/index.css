@@ -2254,40 +2254,44 @@ button:hover {
   color: #8a6424 !important;
 }
 
-/* ========================================
-   TOP NAVIGATION
-======================================== */
+/* =========================================
+   NAVIGATION
+========================================= */
 
 .top-navigation {
   position: sticky;
   top: 0;
-  z-index: 9990;
+  z-index: 9999;
 
   width: 100%;
 
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(12, 12, 14, 0.92);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navigation-inner {
-  width: min(1150px, calc(100% - 40px));
-  min-height: 68px;
+  width: min(1200px, 100%);
   margin: 0 auto;
+
+  min-height: 64px;
+
+  padding: 0 24px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  gap: 30px;
+  gap: 24px;
 }
 
 .navigation-logo {
   display: flex;
   align-items: center;
   gap: 10px;
+
   flex-shrink: 0;
 }
 
@@ -2299,50 +2303,57 @@ button:hover {
   align-items: center;
   justify-content: center;
 
-  border-radius: 11px;
+  border-radius: 10px;
 
-  background: #171717;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 
-  font-family: "Playfair Display", serif;
   font-size: 13px;
+  font-weight: 700;
+}
+
+.navigation-logo div {
+  display: flex;
+  flex-direction: column;
 }
 
 .navigation-logo strong {
-  display: block;
-  font-size: 13px;
-  line-height: 1.1;
-  color: #171717;
+  font-size: 14px;
+  line-height: 1.2;
 }
 
 .navigation-logo small {
-  display: block;
   margin-top: 2px;
 
-  color: #999;
-  font-size: 9px;
-  letter-spacing: 0.5px;
+  font-size: 10px;
+
+  opacity: 0.55;
 }
 
 .navigation-tabs {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .navigation-tabs button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+
   gap: 7px;
 
-  padding: 9px 13px;
+  min-height: 38px;
 
-  border: none;
+  padding: 8px 13px;
+
+  border: 1px solid transparent;
   border-radius: 10px;
 
   background: transparent;
-  color: #777;
 
+  color: rgba(255, 255, 255, 0.7);
+
+  font-family: inherit;
   font-size: 12px;
   font-weight: 600;
 
@@ -2355,34 +2366,103 @@ button:hover {
 }
 
 .navigation-tabs button:hover {
-  background: #f4efe6;
-  color: #947037;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .navigation-tabs button:active {
   transform: scale(0.96);
 }
 
-/* Keep the sticky nav from hiding section headings */
 
-#finance,
-#itinerary,
-#train-journey,
-#expenses {
-  scroll-margin-top: 80px;
-}
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
 
-
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width: 700px) {
+@media (max-width: 768px) {
 
   .top-navigation {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+  }
+
+  .navigation-inner {
+    min-height: 58px;
+
+    padding: 7px 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    overflow: hidden;
+  }
+
+  /* Hide logo on mobile to give tabs more room */
+
+  .navigation-logo {
     display: none;
   }
 
+  .navigation-tabs {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 1px 2px;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .navigation-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navigation-tabs button {
+    flex: 0 0 auto;
+
+    min-height: 40px;
+
+    padding: 8px 13px;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: 12px;
+
+    white-space: nowrap;
+  }
+
+  .navigation-tabs button:hover,
+  .navigation-tabs button:focus {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+
+  .navigation-tabs button svg {
+    flex-shrink: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+  }
 }
 
 /* ========================================
