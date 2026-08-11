@@ -2683,3 +2683,383 @@ button:hover {
     bottom: 5%;
   }
 }
+/* =========================================
+   MOBILE TRAIN JOURNEY
+   ========================================= */
+
+   @media (max-width: 700px) {
+
+    /* Prevent the entire website from moving sideways */
+    html,
+    body,
+    #root {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  
+    /* Main train section */
+    .train-journey {
+      width: 100%;
+      max-width: 100%;
+      padding: 70px 14px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+  
+    .train-header {
+      width: 100%;
+      text-align: left;
+      box-sizing: border-box;
+    }
+  
+    .train-header h2 {
+      font-size: 30px;
+      line-height: 1.1;
+    }
+  
+    .train-header p {
+      font-size: 14px;
+    }
+  
+    /* Going / Return heading */
+    .journey-block {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+  
+    .journey-direction {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-sizing: border-box;
+    }
+  
+    .journey-direction > span {
+      flex-shrink: 0;
+    }
+  
+    .journey-direction strong {
+      font-size: 15px;
+    }
+  
+    .journey-direction small {
+      display: block;
+      font-size: 10px;
+      margin-top: 3px;
+    }
+  
+  
+    /* =========================================
+       TRAIN CARD
+       ========================================= */
+  
+    .train-card {
+      width: 100%;
+      max-width: 100%;
+      margin: 18px 0 0;
+      padding: 18px 14px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+  
+  
+    /* Card header */
+  
+    .train-title {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-sizing: border-box;
+    }
+  
+    .train-title h3 {
+      font-size: 17px;
+      line-height: 1.2;
+      margin: 4px 0;
+    }
+  
+    .train-title p {
+      font-size: 10px;
+      margin: 0;
+    }
+  
+    .train-label {
+      font-size: 8px;
+    }
+  
+    .train-icon {
+      flex-shrink: 0;
+    }
+  
+  
+    /* =========================================
+       HORIZONTAL TRAIN ROUTE
+       ========================================= */
+  
+    .train-route {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 55px minmax(0, 1fr);
+      align-items: center;
+      gap: 6px;
+      margin-top: 28px;
+      box-sizing: border-box;
+    }
+  
+  
+    /* Station */
+  
+    .station {
+      min-width: 0;
+      width: 100%;
+    }
+  
+    .station:first-child {
+      text-align: left;
+    }
+  
+    .station.arrival {
+      text-align: right;
+    }
+  
+    .station-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-bottom: 7px;
+    }
+  
+    .station-code {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+  
+    .station h4 {
+      font-size: 15px;
+      line-height: 1.15;
+      margin: 4px 0;
+      word-break: normal;
+    }
+  
+    .station p {
+      font-size: 9px;
+      margin: 3px 0;
+    }
+  
+    .station strong {
+      display: block;
+      font-size: 15px;
+      margin-top: 7px;
+    }
+  
+    .station small {
+      display: block;
+      font-size: 8px;
+      margin-top: 2px;
+    }
+  
+  
+    /* =========================================
+       TRAIN ANIMATION LINE
+       ========================================= */
+  
+    .route-line {
+      position: relative;
+      width: 100%;
+      height: 45px;
+      min-width: 0;
+    }
+  
+    .route-line .line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      transform: translateY(-50%);
+    }
+  
+    .moving-train {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+  
+      width: 30px;
+      height: 30px;
+  
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      transform: translate(-50%, -50%);
+    }
+  
+    .moving-train svg {
+      width: 22px;
+      height: 22px;
+    }
+  
+    .distance {
+      position: absolute;
+      left: 50%;
+      top: calc(50% + 14px);
+  
+      transform: translateX(-50%);
+  
+      font-size: 7px;
+      white-space: nowrap;
+    }
+  
+  
+    /* =========================================
+       JOURNEY INFORMATION
+       ========================================= */
+  
+    .journey-info {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 25px;
+      box-sizing: border-box;
+    }
+  
+    .journey-info > div {
+      min-width: 0;
+      padding: 9px 5px;
+      box-sizing: border-box;
+    }
+  
+    .journey-info svg {
+      width: 15px;
+      height: 15px;
+    }
+  
+    .journey-info span {
+      font-size: 9px;
+    }
+  
+    .journey-info small {
+      display: block;
+      font-size: 7px;
+      margin-bottom: 2px;
+    }
+  
+  
+    /* =========================================
+       PASSENGERS
+       ========================================= */
+  
+    .passenger-section {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 25px;
+    }
+  
+    .passenger-heading {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+  
+    .passenger-heading > div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+  
+    .passenger-heading h3 {
+      font-size: 13px;
+    }
+  
+    .passenger-heading > span {
+      font-size: 9px;
+      white-space: nowrap;
+    }
+  
+    .passenger-list {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .passenger-row {
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 0;
+      box-sizing: border-box;
+    }
+  
+    .passenger-number {
+      width: 22px;
+      flex-shrink: 0;
+      font-size: 8px;
+    }
+  
+    .passenger-name {
+      flex: 1;
+      min-width: 0;
+      font-size: 11px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  
+    .passenger-ticket {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  
+    .ticket-status {
+      font-size: 7px;
+      padding: 4px 6px;
+      white-space: nowrap;
+    }
+  
+    .passenger-ticket small {
+      font-size: 7px;
+      white-space: nowrap;
+    }
+  
+  
+    /* =========================================
+       CONNECTOR
+       ========================================= */
+  
+    .journey-connector {
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 35px 0;
+      box-sizing: border-box;
+    }
+  
+    .journey-connector span {
+      font-size: 8px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+  
+    .journey-connector svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+  }
