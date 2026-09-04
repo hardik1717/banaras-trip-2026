@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Train,
@@ -9,9 +10,42 @@ import {
 
 import { goingJourney } from "../data/trainJourney";
 import { returnJourney } from "../data/returnJourney";
+import { getTripData } from "../services/googleSheetApi";
 
-function JourneyCard({ journey }) {
+
+function JourneyCard({ journey, sheetPassengers = [] }) {
+
   const isReturn = journey.type === "RETURN";
+
+
+  // ---------------------------------------
+  // MERGE LOCAL JOURNEY DATA + GOOGLE SHEET
+  // ---------------------------------------
+
+  const passengers = journey.passengers.map((passenger) => {
+
+    const sheetPassenger = sheetPassengers.find(
+      (person) =>
+        String(person.Name).trim().toLowerCase() ===
+        String(passenger.name).trim().toLowerCase()
+    );
+
+
+    if (!sheetPassenger) {
+      return passenger;
+    }
+
+
+    return {
+      ...passenger,
+
+      status: isReturn
+        ? sheetPassenger["Return Status"] || passenger.status
+        : sheetPassenger["Going Status"] || passenger.status,
+    };
+
+  });
+
 
   return (
     <motion.div
@@ -21,43 +55,71 @@ function JourneyCard({ journey }) {
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
     >
+
       {/* Header */}
 
       <div className="train-title">
+
         <div>
+
           <span className="train-label">
-            {isReturn ? "RETURN JOURNEY" : "GOING JOURNEY"}
+            {isReturn
+              ? "RETURN JOURNEY"
+              : "GOING JOURNEY"}
           </span>
 
-          <h3>{journey.trainName}</h3>
 
-          <p>Train No. {journey.trainNumber}</p>
+          <h3>
+            {journey.trainName}
+          </h3>
+
+
+          <p>
+            Train No. {journey.trainNumber}
+          </p>
+
         </div>
+
 
         <div className="train-icon">
+
           <Train size={30} />
+
         </div>
+
       </div>
+
 
       {/* Route */}
 
       <div className="train-route">
 
         <div className="station">
+
           <div className="station-dot" />
 
           <span className="station-code">
             {journey.from.shortName}
           </span>
 
-          <h4>{journey.from.station}</h4>
+          <h4>
+            {journey.from.station}
+          </h4>
 
-          <p>{journey.from.city}</p>
+          <p>
+            {journey.from.city}
+          </p>
 
-          <strong>{journey.departure.time}</strong>
+          <strong>
+            {journey.departure.time}
+          </strong>
 
-          <small>{journey.departure.date}</small>
+          <small>
+            {journey.departure.date}
+          </small>
+
         </div>
+
 
         <div className="route-line">
 
@@ -75,16 +137,21 @@ function JourneyCard({ journey }) {
               ease: "easeInOut",
             }}
           >
+
             <Train size={28} />
+
           </motion.div>
 
+
           <div className="line" />
+
 
           <span className="distance">
             {journey.distance}
           </span>
 
         </div>
+
 
         <div className="station arrival">
 
@@ -94,50 +161,85 @@ function JourneyCard({ journey }) {
             {journey.to.shortName}
           </span>
 
-          <h4>{journey.to.station}</h4>
+          <h4>
+            {journey.to.station}
+          </h4>
 
-          <p>{journey.to.city}</p>
+          <p>
+            {journey.to.city}
+          </p>
 
-          <strong>{journey.arrival.time}</strong>
+          <strong>
+            {journey.arrival.time}
+          </strong>
 
-          <small>{journey.arrival.date}</small>
+          <small>
+            {journey.arrival.date}
+          </small>
 
         </div>
 
       </div>
+
 
       {/* Journey information */}
 
       <div className="journey-info">
 
         <div>
+
           <Clock3 size={18} />
 
           <span>
-            <small>Journey</small>
-            {isReturn ? "Return" : "Going"}
+
+            <small>
+              Journey
+            </small>
+
+            {isReturn
+              ? "Return"
+              : "Going"}
+
           </span>
+
         </div>
 
+
         <div>
+
           <Train size={18} />
 
           <span>
-            <small>Class</small>
+
+            <small>
+              Class
+            </small>
+
             {journey.class}
+
           </span>
+
         </div>
 
+
         <div>
+
           <MapPin size={18} />
 
           <span>
-            <small>Distance</small>
+
+            <small>
+              Distance
+            </small>
+
             {journey.distance}
+
           </span>
+
         </div>
 
       </div>
+
 
       {/* Passengers */}
 
@@ -146,84 +248,162 @@ function JourneyCard({ journey }) {
         <div className="passenger-heading">
 
           <div>
+
             <Users size={20} />
 
-            <h3>Train Passengers</h3>
+            <h3>
+              Train Passengers
+            </h3>
+
           </div>
 
+
           <span>
-            {journey.passengers.length} passengers
+            {passengers.length} passengers
           </span>
 
         </div>
 
+
         <div className="passenger-list">
 
-          {journey.passengers.map((passenger, index) => (
+          {passengers.map(
+            (passenger, index) => (
 
-            <motion.div
-              className="passenger-row"
-              key={`${journey.type}-${passenger.name}`}
-              initial={{
-                opacity: 0,
-                x: -20,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                delay: index * 0.04,
-              }}
-            >
+              <motion.div
+                className="passenger-row"
+                key={`${journey.type}-${passenger.name}`}
+                initial={{
+                  opacity: 0,
+                  x: -20,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  delay: index * 0.04,
+                }}
+              >
 
-              <span className="passenger-number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+                <span className="passenger-number">
 
-              <span className="passenger-name">
-                {passenger.name}
-              </span>
-
-              <div className="passenger-ticket">
-
-                <span
-                  className={`ticket-status ${
-                    passenger.status === "CONFIRMED"
-                      ? "confirmed"
-                      : "waiting"
-                  }`}
-                >
-                  {passenger.status}
-                </span>
-
-                {isReturn &&
-                  passenger.coach &&
-                  passenger.berth && (
-                    <small>
-                      {passenger.coach} • {passenger.berth}
-                    </small>
+                  {String(index + 1).padStart(
+                    2,
+                    "0"
                   )}
 
-              </div>
+                </span>
 
-            </motion.div>
 
-          ))}
+                <span className="passenger-name">
+
+                  {passenger.name}
+
+                </span>
+
+
+                <div className="passenger-ticket">
+
+                  <span
+                    className={`ticket-status ${
+                      passenger.status ===
+                      "CONFIRMED"
+                        ? "confirmed"
+                        : "waiting"
+                    }`}
+                  >
+
+                    {passenger.status}
+
+                  </span>
+
+
+                  {isReturn &&
+                    passenger.coach &&
+                    passenger.berth && (
+
+                      <small>
+                        {passenger.coach}
+                        {" • "}
+                        {passenger.berth}
+                      </small>
+
+                    )}
+
+                </div>
+
+              </motion.div>
+
+            )
+          )}
 
         </div>
 
       </div>
+
     </motion.div>
   );
 }
 
+
+
 function TrainJourney() {
+
+  const [sheetPassengers, setSheetPassengers] =
+    useState([]);
+
+  const [loading, setLoading] =
+    useState(true);
+
+
+  // ---------------------------------------
+  // LOAD TRAIN PASSENGERS FROM GOOGLE SHEET
+  // ---------------------------------------
+
+  useEffect(() => {
+
+    async function loadTrainData() {
+
+      try {
+
+        const data =
+          await getTripData();
+
+        setSheetPassengers(
+          data["Train Tickets"] || []
+        );
+
+      } catch (error) {
+
+        console.error(
+          "Train ticket data error:",
+          error
+        );
+
+      } finally {
+
+        setLoading(false);
+
+      }
+
+    }
+
+
+    loadTrainData();
+
+  }, []);
+
+
   return (
-    <section className="train-journey" id="train-journey">
+
+    <section
+      className="train-journey"
+      id="train-journey"
+    >
 
       <div className="train-header">
 
@@ -231,56 +411,110 @@ function TrainJourney() {
           THE TRAIN JOURNEY
         </span>
 
-        <h2>🚆 Mumbai ↔ Varanasi</h2>
+
+        <h2>
+          🚆 Mumbai ↔ Varanasi
+        </h2>
+
 
         <p>
           Two trains. One unforgettable journey.
         </p>
 
+
+        {loading && (
+          <small>
+            Syncing passenger status...
+          </small>
+        )}
+
       </div>
+
 
       {/* GOING */}
 
       <div className="journey-block">
 
         <div className="journey-direction">
-          <span>01</span>
+
+          <span>
+            01
+          </span>
+
           <div>
-            <strong>Mumbai → Ayodhya</strong>
-            <small>30 September – 1 October</small>
+
+            <strong>
+              Mumbai → Ayodhya
+            </strong>
+
+            <small>
+              30 September – 1 October
+            </small>
+
           </div>
+
         </div>
 
-        <JourneyCard journey={goingJourney} />
+
+        <JourneyCard
+          journey={goingJourney}
+          sheetPassengers={sheetPassengers}
+        />
 
       </div>
+
 
       {/* Connector */}
 
       <div className="journey-connector">
+
         <ArrowRight size={20} />
-        <span>Explore • Experience • Return</span>
+
+        <span>
+          Explore • Experience • Return
+        </span>
+
         <ArrowRight size={20} />
+
       </div>
+
 
       {/* RETURN */}
 
       <div className="journey-block">
 
         <div className="journey-direction">
-          <span>02</span>
+
+          <span>
+            02
+          </span>
+
           <div>
-            <strong>Varanasi → Mumbai</strong>
-            <small>4 October – 6 October</small>
+
+            <strong>
+              Varanasi → Mumbai
+            </strong>
+
+            <small>
+              4 October – 6 October
+            </small>
+
           </div>
+
         </div>
 
-        <JourneyCard journey={returnJourney} />
+
+        <JourneyCard
+          journey={returnJourney}
+          sheetPassengers={sheetPassengers}
+        />
 
       </div>
 
     </section>
+
   );
 }
+
 
 export default TrainJourney;
