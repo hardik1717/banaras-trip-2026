@@ -16,7 +16,7 @@ import { getTripData } from "../services/googleSheetApi";
 const TOTAL_PEOPLE = 15;
 
 const TOUR_TOTAL = 120000;
-const TOUR_PAID = 10000;
+const TOUR_PAID = 37500;
 
 const GOING_TRAIN = 1856;
 const RETURN_TRAIN = 1990;
@@ -683,8 +683,8 @@ function TripFinance() {
               {money(27500)}
             </strong>
 
-            <span className="schedule-status pending-status">
-              PENDING
+            <span className="schedule-status">
+              PAID
             </span>
 
           </div>

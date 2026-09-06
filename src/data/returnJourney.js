@@ -73,7 +73,7 @@ export const returnJourney = {
         berth: "56 SIDE UPPER",
       },
       {
-        name: "ABC",
+        name: "Sneha B",
         status: "CONFIRMED",
         coach: "B1",
         berth: "45 MIDDLE",
