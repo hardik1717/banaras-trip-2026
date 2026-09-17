@@ -142,7 +142,7 @@ function Login({ onLogin, onCreateAccount }) {
 
         <div className="auth-logo">
 
-          <span>BH</span>
+          <span>Spiritual Trip</span>
 
         </div>
 

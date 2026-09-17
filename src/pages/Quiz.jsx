@@ -170,6 +170,29 @@ const tripQuestions = [
   },
 ];
 
+const shuffleOptions = (options) => {
+  if (!options || options.length < 2) {
+    return [...options];
+  }
+
+  let shuffled = [...options];
+
+  do {
+    shuffled = [...options];
+
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [
+        shuffled[randomIndex],
+        shuffled[index],
+      ];
+    }
+  } while (shuffled.every((item, index) => item === options[index]));
+
+  return shuffled;
+};
+
+const allQuestions = [...groupQuestions, ...tripQuestions];
 
 // =====================================================
 // QUIZ COMPONENT
@@ -192,25 +215,75 @@ function Quiz({ user, onComplete }) {
   const [saving, setSaving] = useState(false);
 
   const [error, setError] = useState("");
+  const [optionOrder, setOptionOrder] = useState({});
+  const [memberOrder, setMemberOrder] = useState({});
 
-
-  // =====================================================
-  // ALL QUESTIONS
-  // =====================================================
-
-  const allQuestions = [
-    ...groupQuestions,
-    ...tripQuestions,
-  ];
-
-
-  const question =
-    allQuestions[currentQuestion];
-
-
+  const question = allQuestions[currentQuestion];
   const isGroupQuestion =
     currentQuestion < groupQuestions.length;
 
+  useEffect(() => {
+    if (!question || !question.options) {
+      return;
+    }
+
+    setOptionOrder((previous) => {
+      const existing = previous[question.id];
+      let shuffled = shuffleOptions(question.options);
+
+      if (existing && existing.length === question.options.length) {
+        while (JSON.stringify(shuffled) === JSON.stringify(existing)) {
+          shuffled = shuffleOptions(question.options);
+        }
+      }
+
+      return {
+        ...previous,
+        [question.id]: shuffled,
+      };
+    });
+  }, [currentQuestion, question?.id]);
+
+  useEffect(() => {
+    if (!isGroupQuestion || members.length === 0) {
+      return;
+    }
+
+    setMemberOrder((previous) => {
+      const existing = previous[question.id];
+      let shuffled = shuffleOptions(members.map((member) => {
+        const name = member.Name || member.name || "Unknown member";
+        return name;
+      }));
+
+      if (existing && existing.length === members.length) {
+        while (JSON.stringify(shuffled) === JSON.stringify(existing)) {
+          shuffled = shuffleOptions(members.map((member) => {
+            const name = member.Name || member.name || "Unknown member";
+            return name;
+          }));
+        }
+      }
+
+      return {
+        ...previous,
+        [question.id]: shuffled,
+      };
+    });
+  }, [isGroupQuestion, currentQuestion, question?.id, members]);
+
+  const questionOptions =
+    question && question.options
+      ? optionOrder[question.id] || shuffleOptions(question.options)
+      : [];
+
+  const groupMemberOptions =
+    isGroupQuestion && members.length > 0
+      ? memberOrder[question.id] ||
+        shuffleOptions(
+          members.map((member) => member.Name || member.name || "Unknown member")
+        )
+      : [];
 
   const Icon =
     question?.icon || Users;
@@ -613,7 +686,7 @@ function Quiz({ user, onComplete }) {
         <div className="auth-card quiz-card">
 
           <div className="auth-logo">
-            <span>BH</span>
+            <span>Spiritual Trip</span>
           </div>
 
 
@@ -659,7 +732,7 @@ function Quiz({ user, onComplete }) {
 
         <div className="auth-logo">
 
-          <span>BH</span>
+          <span>Spiritual Trip</span>
 
         </div>
 
@@ -768,74 +841,43 @@ function Quiz({ user, onComplete }) {
 
           {isGroupQuestion
 
-            ? members.map(
-                (member) => {
+            ? groupMemberOptions.map((name) => {
+                const member = members.find((item) => {
+                  const memberName = item.Name || item.name || "Unknown member";
+                  return memberName === name;
+                });
 
-                  const name =
-                    member.Name ||
-                    member.name ||
-                    "Unknown member";
+                const memberId =
+                  member?.ID ||
+                  member?.Id ||
+                  member?.["Member ID"] ||
+                  name;
 
+                const isSelected =
+                  Array.isArray(selected)
+                    ? selected.includes(name)
+                    : selected === name;
 
-                  const memberId =
-                    member.ID ||
-                    member.Id ||
-                    member["Member ID"] ||
-                    name;
+                return (
+                  <button
+                    key={memberId}
+                    type="button"
+                    className={`quiz-option ${isSelected ? "selected" : ""}`}
+                    onClick={() => handleSelect(name)}
+                  >
+                    <span>{name}</span>
 
-
-                  const isSelected =
-                    Array.isArray(selected)
-                      ? selected.includes(name)
-                      : selected === name;
-
-
-                  return (
-
-                    <button
-
-                      key={memberId}
-
-                      type="button"
-
-                      className={
-                        `quiz-option ${
-                          isSelected
-                            ? "selected"
-                            : ""
-                        }`
-                      }
-
-                      onClick={() =>
-                        handleSelect(name)
-                      }
-
-                    >
-
-                      <span>
-                        {name}
-                      </span>
-
-
-                      {isSelected && (
-
-                        <Check size={18} />
-
-                      )}
-
-                    </button>
-
-                  );
-
-                }
-              )
+                    {isSelected && <Check size={18} />}
+                  </button>
+                );
+              })
 
 
             // =================================================
             // TRIP QUESTIONS
             // =================================================
 
-            : question.options.map(
+            : questionOptions.map(
                 (option) => {
 
                   const isSelected =

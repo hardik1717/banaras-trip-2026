@@ -49,7 +49,7 @@ function Navigation({ onLogout }) {
       <div className="navigation-inner">
 
         <div className="navigation-logo">
-          <span>BH</span>
+          <span>Spiritual Trip</span>
 
           <div>
             <strong>Banaras 2026</strong>
